@@ -20,7 +20,7 @@ def get_doc(url, processed_text_count):
     print("Downloading:", url)
     req = Request(url, headers={'User-Agent' : "Magic Browser"})
     try:
-        r = urlopen(req, timeout = 8).read()
+        r = urlopen(req, timeout = 4).read()
 
         if url[-4:] =='.pdf':
             # filename = self.dir +'/file_'+ str(processed_text_count)+'.pdf'

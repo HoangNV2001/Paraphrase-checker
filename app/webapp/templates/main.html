@@ -79,7 +79,7 @@
                       <span class="col-sm">Slider</span><span class="col-sm">selected value</span><span class="col-sm">estimated time (s)</span>
             </div>
             <div class="card-body row">
-                      <span class="col-sm">{{ form.num_files(min=1, max=40,
+                      <span class="col-sm">{{ form.num_files(min=1, max=20,
                             oninput="outputUpdate(num_files.value)") }}</span>
                       <span id="val_num_files" class="col-sm">{{ form.num_files.data}}</span>
                       <span id="val_est_time" class="col-sm">{{ form.num_files.data*12}}</span>

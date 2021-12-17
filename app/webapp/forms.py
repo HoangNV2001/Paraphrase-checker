@@ -13,8 +13,8 @@ class MainForm(FlaskForm):
 
     keyword = StringField('Keywords for searching')
     pdf_only = BooleanField('Only search for PDF files')
-    
-    default_slider_val = 10
+
+    default_slider_val = 6
     num_files = IntegerRangeField('How many search results do you want to compare your document with?', default = default_slider_val)
 
     def validate_keyword(self, keyword):

@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+{% block content %}
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var proportion_data = google.visualization.arrayToDataTable([
+      {% for key, value in proportion_data.items() %}
+				{% if value is string %}
+					['{{ key }}', '{{ value }}'],
+				{% else %}
+					['{{ key }}', {{ value }}],
+				{% endif %}
+      {% endfor %}
+        ]);
+
+        var options = {
+          title: 'Similarity Proportion',
+          slices:{
+            0: {color: 'red'},
+            1: {color: 'orange'},
+            2: {color: 'yellow'},
+            3: {color: 'blue'},
+            4: {color: 'green'},
+          },
+          pieHole: 0.5
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        chart.draw(proportion_data, options);
+      }
+    </script>
+    <div class="content-section">
+      <div class="media">
+        <div class="media-body">
+          <h2 class="account-heading">Result</h2>
+        </div>
+      </div>
+
+      <legend class="border-bottom mb-4">Proportions</legend>
+      <p class="text-secondary">The percentage of sentences in your document that share some similarities with sources found online.<br>The categories are the ranges of paraphrasing probability, determined by ML model.</p>
+      <div style="margin: 10px 0 0 10px;width: 1000px">
+    		<div id="piechart" style="width: 900px; height: 500px;"></div>
+    	</div>
+
+      <legend class="border-bottom mb-4">Similar sentences</legend>
+      <p class="text-secondary">The sentences are sorted by order of appearance in your document.</p>
+      <table class="table">
+        <tr class="table__header">
+            {% for header in headings %}
+            <th class="table__cell">{{ header }}</th>
+            {% endfor %}
+        </tr>
+        {% for row in data %}
+        <tr class="table__row">
+          {% for cell in row%}
+          <td class="table__cell">{{ cell|safe }}</td>
+          {% endfor %}
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+{% endblock content %}

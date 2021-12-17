@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+
+    {% if title %}
+        <title>Paraphrase Identifier - {{ title }}</title>
+    {% else %}
+        <title>Paraphrase Identifier</title>
+    {% endif %}
+</head>
+<body>
+    <header class="site-header">
+      <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+        <div class="container">
+          <a class="navbar-brand mr-4" href="/">Paraphrase Identifier</a>
+        </div>
+      </nav>
+    </header>
+
+    <main role="main" class="container">
+
+
+          {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+              {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                  {{ message }}
+                </div>
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
+
+          {% block content %}{% endblock %}
+
+    <br><br><br>
+    </main>
+    <br><br>
+    <footer class="bg-steel">
+        <p class="text-right text-white p-3">
+          Nguyễn Việt Hoàng <br>
+          20194434 <br>
+          DSAI 01-K64 <br>
+          hoang.nv194434@sis.hust.edu.vn <br>
+          hoangnguyenviet1611@gmail.com
+        </p>
+    </footer>
+</body>
+
+</html>

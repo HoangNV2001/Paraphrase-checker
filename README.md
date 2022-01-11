@@ -4,9 +4,8 @@
 
 ## About The Project
 Description: Paraphrase Checking Web App. <br>
-Project submission to course Project I, 709162 - IT3910E<br>
+Project submission to course Project I - 709162 - IT3910E<br>
 Student: Nguyễn Việt Hoàng - SID: 20194434<br>
-January 2022<br>
 
 ## Getting Started
 _These are the instructions on setting up this project locally._

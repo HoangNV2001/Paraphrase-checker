@@ -24,11 +24,12 @@ class TextWrapper:
         to_pop = []
 
         for i in range(len(sentence_list)):
-            splited = [w.lower() for w in compile(r"\w+").findall(sentence_list[i])]
-            if len(splited) <5:
-                if not_first_single_word_sentence:
-                    to_pop.append(i)
-
+            s = sentence_list[i]
+            s = [w.lower() for w in compile(r"\w+").findall(s)]
+            if len(s) <5:
+                to_pop.append(i)
+            sentence_list[i] = s
+            
         for ind in to_pop[::-1]:
             sentence_list.pop(ind)
 

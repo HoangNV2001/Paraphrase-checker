@@ -29,7 +29,7 @@ class TextWrapper:
             if len(s) <5:
                 to_pop.append(i)
             sentence_list[i] = s
-            
+
         for ind in to_pop[::-1]:
             sentence_list.pop(ind)
 
@@ -56,8 +56,13 @@ def process_input_file(file_path, type):
     if type == 'pdf':
         text = PdfConverter(file_path= file_path).convert_pdf_to_txt()
     elif type == 'txt':
-        with open(file_path, 'r', encoding = "utf-8") as f:
-            text = f.read()
+        try:
+            with open(file_path, 'r', encoding = "utf-8") as f:
+                text = f.read()
+        except:
+            with open(file_path, 'r', encoding = "cp1252") as f:
+                text = f.read()
+
     else:
         raise Exception("Unknown file type!")
 

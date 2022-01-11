@@ -1,3 +1,11 @@
+'''
+contain the methods for similarity measures between two sentences (details in the
+report),
+and vectorize_pair method, which takes in two sentences and returns a 1x9 vector,
+corresponding to 9 similarity measures calculated for the pair.
+'''
+
+
 from math import sqrt
 from re import compile
 from collections import Counter
@@ -6,8 +14,12 @@ from nltk import trigrams, bigrams
 from numpy import array
 
 
-
 def cosine(text_list1, text_list2):
+    '''
+    :param: text_list1: list of strings, each string is a word.
+    :param: text_list2: list of strings, each string is a word.
+    :returns: float: Cosine Similarity of the 2 word vectors.
+    '''
     vec1 = Counter(text_list1)
     vec2 = Counter(text_list2)
 
@@ -25,6 +37,11 @@ def cosine(text_list1, text_list2):
 
 
 def levenshtein_scaled(text_list1, text_list2):
+    '''
+    :param: text_list1: list of strings, each string is a word.
+    :param: text_list2: list of strings, each string is a word.
+    :returns: float: Scaled Levenshtein distance of the 2 word vectors.
+    '''
     size_x = len(text_list1) + 1
     size_y = len(text_list2) + 1
     matrix = zeros ((size_x, size_y))
@@ -56,7 +73,11 @@ def levenshtein_scaled(text_list1, text_list2):
 
 
 def jaro_distance(s1, s2) :
-
+    '''
+    :param: text_list1: list of strings, each string is a word.
+    :param: text_list2: list of strings, each string is a word.
+    :returns: float: Jaro distance of the 2 word vectors.
+    '''
     # If the strings are equal
     if (s1 == s2) :
         return 1.0;
@@ -128,7 +149,11 @@ def jaro_distance(s1, s2) :
 
 # Jaro Winkler Similarity
 def jaro_Winkler(s1, s2) :
-
+    '''
+    :param: text_list1: list of strings, each string is a word.
+    :param: text_list2: list of strings, each string is a word.
+    :returns: float: Jaro Winkler distance of the 2 word vectors.
+    '''
     jaro_dist = jaro_distance(s1, s2);
 
     # If the jaro Similarity is above a threshold
@@ -157,6 +182,11 @@ def jaro_Winkler(s1, s2) :
 
 
 def manhattan_scaled(text_list1, text_list2):
+    '''
+    :param: text_list1: list of strings, each string is a word.
+    :param: text_list2: list of strings, each string is a word.
+    :returns: float: Scaled Manhattan distance of the 2 word vectors.
+    '''
     vec1 = Counter(text_list1)
     vec2 = Counter(text_list2)
 
@@ -175,6 +205,11 @@ def manhattan_scaled(text_list1, text_list2):
 
 
 def euclidean_scaled(text_list1, text_list2):
+    '''
+    :param: text_list1: list of strings, each string is a word.
+    :param: text_list2: list of strings, each string is a word.
+    :returns: float: Scaled Euclidean distance of the 2 word vectors.
+    '''
     vec1 = Counter(text_list1)
     vec2 = Counter(text_list2)
 
@@ -192,6 +227,11 @@ def euclidean_scaled(text_list1, text_list2):
         return sqrt(distance)/denominator
 
 def bigram_scaled(text_list1, text_list2):
+    '''
+    :param: text_list1: list of strings, each string is a word.
+    :param: text_list2: list of strings, each string is a word.
+    :returns: float: Scaled Bi-gram distance of the 2 word vectors.
+    '''
     set1 = set(bigrams(text_list1))
     set2 = set(bigrams(text_list2))
 
@@ -205,6 +245,11 @@ def bigram_scaled(text_list1, text_list2):
         return float(len(intersection))/len(union)
 
 def trigram_scaled(text_list1, text_list2):
+    '''
+    :param: text_list1: list of strings, each string is a word.
+    :param: text_list2: list of strings, each string is a word.
+    :returns: float: Scaled Tri-gram distance of the 2 word vectors.
+    '''
     set1 = set(trigrams(text_list1))
     set2 = set(trigrams(text_list2))
 
@@ -218,6 +263,11 @@ def trigram_scaled(text_list1, text_list2):
         return float(len(intersection))/len(union)
 
 def dice(text_list1, text_list2):
+    '''
+    :param: text_list1: list of strings, each string is a word.
+    :param: text_list2: list of strings, each string is a word.
+    :returns: float: Dice coefficient of the 2 word vectors.
+    '''
     vec1 = Counter(text_list1)
     vec2 = Counter(text_list2)
 
@@ -230,6 +280,11 @@ def dice(text_list1, text_list2):
         return 2*intersection/denominator
 
 def jaccard(text_list1, text_list2):
+    '''
+    :param: text_list1: list of strings, each string is a word.
+    :param: text_list2: list of strings, each string is a word.
+    :returns: float: Jaccard coefficient of the 2 word vectors.
+    '''
     vec1 = Counter(text_list1)
     vec2 = Counter(text_list2)
 
@@ -242,10 +297,13 @@ def jaccard(text_list1, text_list2):
         return intersection/denominator
 
 def vectorize_pair(text_list1, text_list2):
+    '''
+    :param: text_list1: list of strings, each string is a word.
+    :param: text_list2: list of strings, each string is a word.
+    :returns: List of float: The 9 similarity measure values of the 2 word vectors.
+    '''
     return [cosine(text_list1,text_list2), levenshtein_scaled(text_list1,text_list2), jaro_Winkler(text_list1,text_list2), manhattan_scaled(text_list1,text_list2), euclidean_scaled(text_list1,text_list2), bigram_scaled(text_list1,text_list2), trigram_scaled(text_list1,text_list2), dice(text_list1,text_list2), jaccard(text_list1,text_list2)]
 
-# def vectorize_pair_reduced(text_list1, text_list2):
-#     return [cosine(text_list1,text_list2), levenshtein(text_list1,text_list2), jaro_Winkler(text_list1,text_list2)]
 
 
 if __name__ == '__main__':

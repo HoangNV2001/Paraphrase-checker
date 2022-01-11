@@ -1,58 +1,45 @@
 from re import compile
 
-def sentence_to_vec(s):
-    s = [w.lower() for w in compile(r"\w+").findall(s)]
-    cur = 0
-    to_pop =[]
-    not_first_single_char = False
-    for i in range(len(s)):
-        if len(s[i]) <2 and i>0:
-            if not_first_single_char:
-                s[cur] += s[i]
-                to_pop.append(i)
-            else:
-                cur = i
-                not_first_single_char = True
-        else:
-            cur = i
-            not_first_single_char = False
-
-    for ind in to_pop[::-1]:
-        s.pop(ind)
-    return s
 
 class TextWrapper:
+    '''
+    Wrap a document, which is in String type, in an Object.
+    Provide some attributes and methods for later uses in Compare
+    '''
     def __init__(self, text):
         self.text = text
         self.list_sentence_vectors = self._split_sentence_word()
-        self.inverted_index = self._inverted_index()
         self.sentence_count = len(self.list_sentence_vectors)
+        self.inverted_index = self._inverted_index()
 
     def _split_sentence_word(self):
+        '''
+        Split the text into list of sentences.
+        Each sentence is splited into list of words.
+        Sentences which have less than 5 words would be removed
+                                        (not used for comparison).
+        :return: list of lists of strings.
+        '''
         sentence_list = self.text.split('.')
         to_pop = []
-        cur = 0
-        not_first_single_word_sentence = False
+
         for i in range(len(sentence_list)):
-            splited = sentence_to_vec(sentence_list[i])
-            if len(splited) <2 and i>0:
+            splited = [w.lower() for w in compile(r"\w+").findall(sentence_list[i])]
+            if len(splited) <5:
                 if not_first_single_word_sentence:
-                    sentence_list[cur].extend(splited)
                     to_pop.append(i)
-                else:
-                    sentence_list[i] = splited
-                    cur = i
-                    not_first_single_word_sentence = True
-            else:
-                sentence_list[i] = splited
-                cur = i
-                not_first_single_word_sentence = False
 
         for ind in to_pop[::-1]:
             sentence_list.pop(ind)
+
         return sentence_list
 
     def _inverted_index(self):
+        '''
+        return: inverted_index: Dictionary,
+                Keys are words that appear in the document,
+                Values are the indexes of the sentences that contain the word.
+        '''
         inverted_index = {}
         for i in range(len(self.list_sentence_vectors)):
             for word in self.list_sentence_vectors[i]:

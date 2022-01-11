@@ -79,7 +79,13 @@ def search_and_compare(file_path, type, query, num):
 
     match = {}
     for processed_text_dir in processed_text_dirs:
-        match = compare(match, text_wrapper1 , processed_text_dir, pkl_model)
+        try:
+            match = compare(match, text_wrapper1 , processed_text_dir, pkl_model)
+        except Exception as e:
+            print(e)
+            pass
+            
+    for processed_text_dir in processed_text_dirs:
         os.remove(processed_text_dir[0])
     print("Finished comparing!")
 

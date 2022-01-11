@@ -11,10 +11,25 @@ from app.Modules.PDFtoTxt import PdfConverter
 #         self.urls = []
 
 def search(query, num = 10):
+    '''
+    Search Google using the query and get the URLs from search results
+    :param: query: String, the keywords for searching
+    :param: num: Int, number of search results to take into account
+    :return: list of strings: URLs from search results
+    '''
     urls = Search(query, num_results= num*2)
+    #search for 2 times the designated number. The spared are used for backup,
+    #in case one of the links are inaccessible
     return urls
 
 def get_doc(url, processed_text_count):
+    '''
+    Open the URLs, and download its content.
+    :param: url: string
+    :param: processed_text_count: Int, the number of downloaded pages so far,
+            used for naming/numbering purpose.
+    :return: string: The directory to the downloaded content
+    '''
     processed_text_dir = None
 
     print("Downloading:", url)
@@ -50,6 +65,13 @@ def get_doc(url, processed_text_count):
     return processed_text_dir
 
 def search_n_get(query, num = 10):
+    '''
+    Search Google using the query and get the URLs from search results
+    Download the contents in the URLs.
+    :param: query: String, the keywords for searching
+    :param: num: Int, number of contents to download.
+    :return: string: The directories to the downloaded contents
+    '''
     urls = search(query, num)
     processed_text_dirs = []
     processed_text_count = 0

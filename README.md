@@ -29,7 +29,7 @@ _Below is the instruction on installing and setting up the web app._
 6. Leave the console open, and open this URL in the web browser: http://localhost:5000/
 
 ## Usage
-_Please refer to Section **IV.3.Interfaces and demo** in the [Report](https://github.com/HoangNV2001/Paraphrase-checker/blob/main/Report.pdf)_
+_Please refer to Section_ **IV.3.Interfaces and demo** _in [Report](https://github.com/HoangNV2001/Paraphrase-checker/blob/main/Report.pdf)_
 
 ## Contact
 Nguyễn Việt Hoàng - hoang.nv194434@sis.hust.edu.vn - hoangnguyenviet1611@gmail.com </br>

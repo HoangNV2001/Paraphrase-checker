@@ -74,19 +74,26 @@ if __name__ == '__main__':
     X = np.array(train_data)
     y = np.array(train_labels)
 
-    from sklearn.model_selection import train_test_split
-
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=.2, random_state=42)
+    from sklearn.model_selection import KFold
+    kf = KFold(n_splits = 5, shuffle = True, random_state = 42)
 
     from sklearn.svm import SVC
-    svm_clf= SVC(kernel = 'rbf', probability = True)
-    svm_clf.fit(X_train, y_train)
-
     from sklearn.metrics import f1_score, accuracy_score
-    print('f1 = ',f1_score(y_test, svm_clf.predict(X_test)))
-    print('acc = ',accuracy_score(y_test, svm_clf.predict(X_test)))
+    f1_list = []
+    acc_list = []
 
-    import pickle
+    for train_index, test_index in kf.split(X):
+        X_train, X_test = X[train_index], X[test_index]
+        y_train, y_test = y[train_index], y[test_index]
 
-    filename = 'app//Models//SVM//svm_paraphrase_identification_model.sav'
-    pickle.dump(svm_clf, open(filename, 'wb'))
+        svm_clf= SVC(kernel = 'rbf', probability = True)
+        svm_clf.fit(X_train, y_train)
+
+        f1 = f1_score(y_test, svm_clf.predict(X_test))
+        f1_list.append(f1)
+        acc = accuracy_score(y_test, svm_clf.predict(X_test))
+        acc_list.append(acc)
+        print(acc,f1)
+
+    print("Average 5-fold accuracy:", sum(acc_list)/len(acc_list))
+    print("Average 5-fold f1:", sum(f1_list)/len(f1_list))

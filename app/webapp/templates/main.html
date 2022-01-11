@@ -8,7 +8,7 @@
         </div>
       </div>
 
-      <legend class="border-bottom mb-4">Main section</legend>
+      <legend class="border-bottom mb-4">Input your document here</legend>
       <form method="POST" action="" enctype="multipart/form-data">
           {{ form.hidden_tag() }}
           <fieldset class="form-group">
@@ -112,20 +112,20 @@
     <legend class="border-bottom mb-4 ml-1">FAQs</legend>
     <p class="ml-2"><b>How to use?</b></p>
     <p class="ml-4">
-      Step 1: Enter the document that you want to check by filling in the text field, or by inserting a Pdf or Txt file.<br>
+      Step 1: Enter the document that you want to check either by filling in the text field, or by inserting a Pdf or Txt file.<br>
       Step 2: Enter the keywords for the document.<br>
       Step 3: Select the number of search results that you want the engine to search and compare with your document.<br>
       Step 4: Press 'Start search' button, and the system will handle the rest.<br>
     </p>
     <p class="ml-2"><b>What happens after I press the 'Start search' button?</b></p>
     <p class="ml-4">
-      <li class="ml-4">Through Google search API, the system would search for Pdf files using the keywords and the number of search results that was given by the user.</li>
-      <li class="ml-4">The files found in the search result would be downloaded and preprocessed for comparison.</li>
-      <li class="ml-4"> Each sentence from the input document will be examined to determine whether it is a paraphrase of any sentence in the referential documents.</li>
-      <li class="ml-4"> Redirect the user to result page. Delete all the downloaded files, as well as the input document.<br></p>
+      <li class="ml-4">Through Google search API, the system would search for webpages and .pdf files using the keywords and the number of search results that was given by the user.</li>
+      <li class="ml-4">The files found in the search result would be downloaded (or for the case of webpages, the text contents would be scraped), and then preprocessed.</li>
+      <li class="ml-4"> Each sentence from the input document will be examined to determine whether it is a paraphrase of any sentence in the downloaded content.</li>
+      <li class="ml-4"> Redirect the user to result page.<br></p>
     <p class="text-secondary ml-1">
       <b>Notice: Since all temporary files are deleted after comparison stage for privacy purpose, the result page can only be loaded once. <br>
-        Attempting to reload the result page would trigger redirection to the main page.</b>
+        Reloading the result page would lead to redirection to the main page.</b>
     </p>
 
 

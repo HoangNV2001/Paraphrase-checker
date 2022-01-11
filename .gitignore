@@ -127,3 +127,12 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+#
+Scripts/
+Include/
+flask_session/
+app/Data/DownloadedPDFs/*
+app/Modules/.google-cookie
+app/.google-cookie
+pyvenv.cfg

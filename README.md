@@ -13,8 +13,6 @@ _These are the instructions on setting up this project locally._
 * [Python 3.9](https://www.python.org/downloads/release/python-390/)
 ### Installation
 
-_Below is the instruction on installing and setting up the web app._
-
 1. Download the [repo](https://github.com/HoangNV2001/Paraphrase-checker/archive/refs/heads/main.zip)
 2. Unzip the downloaded package. Move the unzipped folder to your desired location.
 3. Open the Command Prompt (for Windows), navigate to the project folder "_Paraphrase-checker_"

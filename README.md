@@ -14,13 +14,13 @@ _These are the instructions on setting up this project locally._
 ### Installation
 
 1. Download the [repo](https://github.com/HoangNV2001/Paraphrase-checker/archive/refs/heads/main.zip)
-2. Unzip the downloaded package. Move the unzipped folder to your desired location.
-3. Open the Command Prompt (for Windows), navigate to the project folder "_Paraphrase-checker_"
+2. Unzip the downloaded package.
+3. Open the Command Prompt (for Windows), navigate to the project folder _Paraphrase-checker_.
 4. Install the libraries in `requirements.txt`
    ```sh
    pip install -r requirements.txt
    ```
-5. Start the web application by enter this command in the command prompt (also in the directory of the project)
+5. To start the web application, in the command prompt that has been navigated to this project's directory, enter this command:
    ```sh
    python run.py
    ```

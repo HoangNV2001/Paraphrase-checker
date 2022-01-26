@@ -25,10 +25,10 @@ _These are the instructions on setting up this project locally._
    python run.py
    ```
 6. Leave the console open, and open this URL in the web browser: http://localhost:5000/
-<!--
+
 ## Usage
-_Please refer to section_ **IV.3.Interfaces and demo** _in [Report](https://github.com/HoangNV2001/Paraphrase-checker/blob/main/Report.pdf)_
--->
+_Please refer to section_ **IV.3.Interfaces and demo** _in the seperately submitted Report
+
 ## Contact
 Nguyễn Việt Hoàng - hoang.nv194434@sis.hust.edu.vn - hoangnguyenviet1611@gmail.com </br>
 Project Link: [https://github.com/HoangNV2001/Paraphrase-checker/](https://github.com/HoangNV2001/Paraphrase-checker/)

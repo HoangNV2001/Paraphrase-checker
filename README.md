@@ -32,7 +32,7 @@ _These are the instructions on setting up this project locally._
 ![Demo1](https://user-images.githubusercontent.com/72451372/155877871-61a834da-acd3-4e02-bbd5-5a107e38cf7c.png)
 
 * User input the document that needs to be check by either enter the text into Section 1, or insert the document through the button in Section 2. 
-<br><b>Note</b>: Section 1 and 2 cannot be both filled nor empty.
+<br><b>Note</b>: Section 1 and 2 cannot be both filled nor both empty.
 * Next, the user enter the keyword that best summarize/ present the document content into Section 3. This keyword will be used to search for documents/webpages on Google search. <br> Section 3 cannot be empty.
 * If the user want to only compare with PDF files (which mean to exclude websites from the search), tick the check box in Section 4.
 * Downloading and comparing with 1 document on average takes 12 seconds. The number of default value for number of search results to download and compare is 6, with the maximum value is 20. This value can be changed by the user by using the slider in Section 5.
